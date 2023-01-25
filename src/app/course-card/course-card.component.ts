@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Course } from '../model/course';
 
 @Component({
   selector: 'app-course-card',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./course-card.component.css']
 })
 export class CourseCardComponent {
+
+  @Input()
+  course: Course | undefined;
+
+  constructor() { }
+
+  ngOnInit() {
+
+  }
 
 }

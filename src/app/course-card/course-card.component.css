@@ -52,3 +52,7 @@
 .course-card.beginner {
     background: lightsalmon;
 }
+
+.course-icon {
+    width: 50%;
+}
