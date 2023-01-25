@@ -11,6 +11,9 @@ export class CourseCardComponent {
   @Input()
   course: Course | undefined;
 
+  @Input()
+  cardIndex: number | undefined;
+
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();
 

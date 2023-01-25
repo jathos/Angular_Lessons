@@ -10,3 +10,7 @@ input.demo {
     width: 200px;
     display: block;
 }
+
+app-course-card {
+    width: 60%;
+}
