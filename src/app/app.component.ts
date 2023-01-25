@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { COURSES } from 'src/db-data';
+import { Course } from './model/course';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +14,15 @@ export class AppComponent {
   };
 
   onLogoClicked() {
-
     alert("Hello");
-
   };
 
   onKeyUp(newTitle: string) {
-
     this.data.title = newTitle;
+  };
 
+  onCourseSelected(course: Course) {
+    console.log("Card clicked!", course);
   };
 
   coreCourse = COURSES[0];

@@ -7,7 +7,7 @@
 
 <input class="demo" (keyup)="onKeyUp(titleInput.value)" [value]="data.title" #titleInput>
 
-<app-course-card [course]="coreCourse"></app-course-card>
+<app-course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></app-course-card>
 
 <app-course-card [course]="rxjsCourse"></app-course-card>
 
