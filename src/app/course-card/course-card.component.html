@@ -1,8 +1,14 @@
-<div class="course-card">
+<div class="course-card" *ngIf="course">
+    <!-- adding the above ngIf prevents the "undefined" element of the array in db-data.ts from being shown  -->
     <div class="course-title">
         {{ cardIndex + ". " + course?.description }}
     </div>
-    <img [src]="course?.iconUrl">
+    <img [src]="course?.iconUrl" alt="No pic!" *ngIf="course?.iconUrl; else noImage">
+
+    <ng-template #noImage>
+        <p>No Image is available</p>
+    </ng-template>
+
     <div class="course-description">
         {{ course?.longDescription }}
     </div>
