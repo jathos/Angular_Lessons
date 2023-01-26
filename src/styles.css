@@ -33,6 +33,7 @@ button {
     max-width: 300px;
     margin: 20px auto;
     font-size: 25px;
+    border: 5px solid red;
 }
 
 .warn {

@@ -7,6 +7,34 @@
 
 <input class="demo" (keyup)="onKeyUp(titleInput.value)" [value]="data.title" #titleInput>
 
-<app-course-card *ngFor="let course of courses;index as i;first as isFirst;last as isLast;even as isEven;odd as isOdd"
+<div class="demo">
+  <h4 style="color:darkred; text-align: center;">Pipe Demos</h4>
+  <div>Start Date: {{startDate | date: 'MMM/dd/yy'}}</div>
+  <!-- the above date pipe has different formats that you can specify by using the string after the pipe.  for instance 'MM/dd/yyyy' will give you a numerical month and a 4 digit year -->
+
+  <div>{{ title | lowercase }}</div>
+  <div>{{ title | uppercase }}</div>
+  <div>{{ title | titlecase }}</div>
+
+  <div>{{ price }}</div>
+  <div>{{ price | number: '3.3-5' }}</div>
+  <div>{{ price | currency }}</div>
+  <div>{{ price | currency: 'EUR' }}</div>
+
+  <div>{{ rate | percent }}</div>
+
+  <!-- <app-course-card *ngFor="let course of courses | slice:1:2" [course]="course"></app-course-card> -->
+  <!-- the "slice" pipe used in the commented out code directy above this comment is another pipe that works like js slice, but I kept getting an "unknown" type error-->
+
+  <div>{{ courses | json }}</div>
+
+  <div *ngFor="let pair of course1 | keyvalue;index as i">
+    <p>{{ i + 1 }}. KEY: {{ pair.key }}</p>
+    <p>{{ i + 1 }}. VALUE: {{ pair.value }}</p>
+  </div>
+
+</div>
+
+<app-course-card *ngFor="let course of courses;index as i; first as isFirst;last as isLast;even as isEven;odd as isOdd"
   (courseSelected)="onCourseSelected($event)" [course]="course" [cardIndex]="i + 1" [class.is-first]="isFirst"
   [class.is-even]="isEven" [class.is-odd]="isOdd" [class.is-last]="isLast"></app-course-card>

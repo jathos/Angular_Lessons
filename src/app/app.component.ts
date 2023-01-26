@@ -27,4 +27,14 @@ export class AppComponent {
 
   courses = COURSES;
 
+  startDate = new Date(2000, 0, 1);
+
+  title = COURSES[0].description;
+
+  price = 9.996532198;
+
+  rate = .67;
+
+  course1 = COURSES[0];
+
 }
