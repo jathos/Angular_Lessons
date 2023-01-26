@@ -1,5 +1,7 @@
-<div class="course-card" *ngIf="course">
+<div class="course-card" *ngIf="course" [ngClass]="cardClasses()">
     <!-- adding the above ngIf prevents the "undefined" element of the array in db-data.ts from being shown  -->
+    <!-- the ngClass input is used only for conditionally applied classes and is recommeded to use a function as shown here
+    the function uses an object, whose properties will equate to either true or false, and will apply the corresponding property name as a css class  -->
     <div class="course-title">
         {{ cardIndex + ". " + course?.description }}
     </div>

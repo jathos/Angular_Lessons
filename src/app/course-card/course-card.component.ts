@@ -29,4 +29,10 @@ export class CourseCardComponent {
     this.courseEmitter.emit(this.course);
   };
 
+  cardClasses() {
+    return {
+      'beginner': this.course?.category == 'BEGINNER'
+    };
+  }
+
 }
