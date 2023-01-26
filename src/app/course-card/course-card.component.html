@@ -2,13 +2,13 @@
     <!-- adding the above ngIf prevents the "undefined" element of the array in db-data.ts from being shown  -->
     <!-- the ngClass input is used only for conditionally applied classes and is recommeded to use a function as shown here
     the function uses an object, whose properties will equate to either true or false, and will apply the corresponding property name as a css class  -->
-    <div class="course-title">
+    <div class="course-title" [style.text-decoration]="'underline'" style="font-size:30pt" [ngStyle]="cardStyles()">
         {{ cardIndex + ". " + course?.description }}
     </div>
     <img [src]="course?.iconUrl" alt="No pic!" *ngIf="course?.iconUrl; else noImage">
 
     <ng-template #noImage>
-        <p>No Image is available</p>
+        <p [ngStyle]="{'color': 'red', 'font-weight': 'bold'}">No Image is available</p>
     </ng-template>
 
     <div class="course-description">

@@ -33,6 +33,10 @@ export class CourseCardComponent {
     return {
       'beginner': this.course?.category == 'BEGINNER'
     };
+  };
+
+  cardStyles() {
+    return
   }
 
 }
