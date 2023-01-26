@@ -36,7 +36,9 @@ export class CourseCardComponent {
   };
 
   cardStyles() {
-    return
-  }
+    return {
+      'text-decoration': 'underline'
+    }
+  };
 
 }

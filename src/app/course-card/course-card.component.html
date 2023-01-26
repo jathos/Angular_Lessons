@@ -2,18 +2,30 @@
     <!-- adding the above ngIf prevents the "undefined" element of the array in db-data.ts from being shown  -->
     <!-- the ngClass input is used only for conditionally applied classes and is recommeded to use a function as shown here
     the function uses an object, whose properties will equate to either true or false, and will apply the corresponding property name as a css class  -->
-    <div class="course-title" [style.text-decoration]="'underline'" style="font-size:30pt" [ngStyle]="cardStyles()">
-        {{ cardIndex + ". " + course?.description }}
+
+    <div class="course-title" [style.font-size]="'30pt'" [ngStyle]="cardStyles()">
+        {{ cardIndex + ". " + course.description }}
     </div>
-    <img [src]="course?.iconUrl" alt="No pic!" *ngIf="course?.iconUrl; else noImage">
+
+    <img [src]="course.iconUrl" alt="No pic!" *ngIf="course?.iconUrl; else noImage">
 
     <ng-template #noImage>
         <p [ngStyle]="{'color': 'red', 'font-weight': 'bold'}">No Image is available</p>
     </ng-template>
 
     <div class="course-description">
-        {{ course?.longDescription }}
+        {{ course.longDescription }}
+    </div>
+
+    <div class="course-category" [ngSwitch]="course.category">
+        <div class="category" *ngSwitchCase="'BEGINNER'">Beginner</div>
+        <div class="category" *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
+        <div class="category" *ngSwitchCase="'ADVANCED'">Advanced</div>
+        <div class="category" *ngSwitchDefault>All Levels</div>
+        <!-- the *ngSwitchDefault above is used for when none of the data matches the Switch cases.  For instance, check out the category property for #4 in the db-data.ts file, -->
+        <!-- and check the corresponding output in the running app  -->
     </div>
 
     <button (click)="onCourseViewed()">View Course</button>
+
 </div>
