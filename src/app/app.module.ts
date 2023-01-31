@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CourseCardComponent } from './course-card/course-card.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './routes';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { CourseCardComponent } from './course-card/course-card.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
