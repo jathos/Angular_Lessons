@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { COURSES } from 'src/db-data';
+import { GetCoursesService } from './get-courses.service';
 import { Course } from './model/course';
 
 @Component({
@@ -26,7 +28,7 @@ export class AppComponent implements OnInit {
     console.log("Card clicked!", course);
   };
 
-  courses: any;
+  courses$: any;
 
   startDate = new Date(2000, 0, 1);
 
@@ -38,20 +40,18 @@ export class AppComponent implements OnInit {
 
   course1 = COURSES[0];
 
-  constructor(private http: HttpClient) {
+  constructor(private getCourses: GetCoursesService) {
 
   }
 
   ngOnInit() {
 
-    const params = new HttpParams()
-      .set("page", "1")
-      .set("pageSize", "10");
+    //THE BELOW CODE IS ALSO AN ACCEPTABLE WAY TO DISPLAY THE COURSES IN THE TEMPLATE
+    // this.getCourses.getCourses()
+    //   .subscribe((ele: any) => this.courses = ele);
 
-    this.http.get('/api/courses', { params })
-      .subscribe(
-        (val: any) => this.courses = val
-      )
+    this.courses$ = this.getCourses.getCourses();
+
   }
 
 }

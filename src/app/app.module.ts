@@ -5,18 +5,21 @@ import { AppComponent } from './app.component';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
+import { RouterPracticeComponent } from './router-practice/router-practice.component';
+import { GetCoursesService } from './get-courses.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    RouterPracticeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [GetCoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

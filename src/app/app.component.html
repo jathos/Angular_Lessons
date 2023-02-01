@@ -7,6 +7,8 @@
 
 <input class="demo" (keyup)="onKeyUp(titleInput.value)" [value]="data.title" #titleInput>
 
+<router-outlet></router-outlet>
+
 <div class="demo">
   <h4 style="color:darkred; text-align: center;">Pipe Demos</h4>
   <div>Start Date: {{startDate | date: 'MMM/dd/yy'}}</div>
@@ -26,7 +28,7 @@
   <!-- <app-course-card *ngFor="let course of courses | slice:1:2" [course]="course"></app-course-card> -->
   <!-- the "slice" pipe used in the commented out code directy above this comment is another pipe that works like js slice, but I kept getting an "unknown" type error-->
 
-  <div>{{ courses | json }}</div>
+  <div>{{ courses$ | async | json }}</div>
 
   <div *ngFor="let pair of course1 | keyvalue;index as i">
     <p>{{ i + 1 }}. KEY: {{ pair.key }}</p>
@@ -35,6 +37,7 @@
 
 </div>
 
-<app-course-card *ngFor="let course of courses;index as i; first as isFirst;last as isLast;even as isEven;odd as isOdd"
+<app-course-card
+  *ngFor="let course of (courses$ | async );index as i; first as isFirst;last as isLast;even as isEven;odd as isOdd"
   (courseSelected)="onCourseSelected($event)" [course]="course" [cardIndex]="i + 1" [class.is-first]="isFirst"
   [class.is-even]="isEven" [class.is-odd]="isOdd" [class.is-last]="isLast"></app-course-card>
